@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Elegant Mug",
+    "description": "Premium quality mug perfect for coffee lovers.",
+    "price": 39.49,
+    "oldPrice": 78.66,
+    "discount": 50,
+    "reviews": 43,
+    "image": "/images/tasse2.png"
+  },
+  {
+    "id": 2,
+    "name": "Classic Mug",
+    "description": "Simple and stylish mug for everyday use.",
+    "price": 29.99,
+    "oldPrice": 59.99,
+    "discount": 50,
+    "reviews": 28,
+    "image": "/images/tasse2.png"
+  },
+  {
+    "id": 3,
+    "name": "Modern Mug",
+    "description": "Minimalist design with a smooth finish.",
+    "price": 24.99,
+    "oldPrice": 49.99,
+    "discount": 50,
+    "reviews": 35,
+    "image": "/images/tasse2.png"
+  }
+]
