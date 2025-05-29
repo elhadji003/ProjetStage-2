@@ -40,7 +40,7 @@ export default function InfoPerso({ userId }) {
           setPhonePrefix(data.number.slice(0, 4));
           setPhoneNumber(data.number.slice(4));
         }
-        setAvatarUrl(`http://localhost:5000${data.avatar}`);
+        setAvatarUrl(`https://projetstagebackend-2.onrender.com${data.avatar}`);
         if (data.birthday) {
           setBirthday(data.birthday.split("T")[0]); // extrait uniquement "YYYY-MM-DD"
         }
