@@ -11,9 +11,7 @@ export default function LayoutWrapper({ children }) {
 
   // Vérifie si le chemin commence par /login ou /register
   const isAuthPage =
-    pathname.startsWith("/login") ||
-    pathname.startsWith("/register") ||
-    pathname.startsWith("/");
+    pathname.startsWith("/login") || pathname.startsWith("/register");
 
   const protectedRoutes = ["/home", "/profile"];
   const isProtectedPage = protectedRoutes.includes(pathname);
