@@ -6,16 +6,24 @@ const api = axios.create({
     "https://projetstagebackend-2.onrender.com/api",
 });
 
+// Vérifier si on est côté navigateur
+const isBrowser = typeof window !== "undefined";
+
 // Initialiser le token depuis localStorage si présent
-let token = localStorage.getItem("authToken") || null;
+let token = null;
+if (isBrowser) {
+  token = localStorage.getItem("authToken") || null;
+}
 
 // Fonction pour définir dynamiquement le token
 export const setApiToken = (newToken) => {
   token = newToken;
-  if (newToken) {
-    localStorage.setItem("authToken", newToken);
-  } else {
-    localStorage.removeItem("authToken");
+  if (isBrowser) {
+    if (newToken) {
+      localStorage.setItem("authToken", newToken);
+    } else {
+      localStorage.removeItem("authToken");
+    }
   }
 };
 
@@ -34,8 +42,7 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response.data, // On retourne directement les données
   (error) => {
-    if (error.response && error.response.status === 401) {
-      // Par exemple : rediriger vers la page login
+    if (isBrowser && error.response && error.response.status === 401) {
       window.location.href = "/login";
     }
     return Promise.reject(error);
