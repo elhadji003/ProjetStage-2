@@ -3,9 +3,13 @@
 import { BreadcrumbLink } from "@/styles/mugs/MugDetailStyle";
 import { Breadcrumb } from "@/styles/MugsStyle";
 import { Container } from "@/styles/profile/ProfileStyle";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FiChevronRight, FiLogOut } from "react-icons/fi";
 import InfoPerso from "../components/profile/InfoPerso";
+import Order from "../components/profile/Order";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { AuthContext } from "@/context/AuthContext";
 
 const tabs = [
   { id: "personal", label: "Personnel Information" },
@@ -20,6 +24,9 @@ const tabs = [
 export default function Profile() {
   const [selectedTab, setSelectedTab] = useState("personal");
 
+  const { logoutUser } = useContext(AuthContext);
+  const router = useRouter();
+
   const renderTabContent = () => {
     switch (selectedTab) {
       case "personal":
@@ -31,15 +38,19 @@ export default function Profile() {
       case "refer":
         return <div>Refer friends and earn rewards!</div>;
       case "orders":
-        return <div>Your orders will be displayed here.</div>;
+        return (
+          <div>
+            <Order />
+          </div>
+        );
       case "wishlist":
-        return <div>Your wishlist items.</div>;
+        return <div>Lorem ipsum dolor sit amet.</div>;
       case "reviews":
-        return <div>Your product reviews.</div>;
+        return <div>Lorem ipsum dolor sit amet.</div>;
       case "address":
-        return <div>Your saved addresses.</div>;
+        return <div>Lorem ipsum dolor sit amet.</div>;
       case "cards":
-        return <div>Your saved payment cards.</div>;
+        return <div>Lorem ipsum dolor sit amet.</div>;
       default:
         return <div>Select a section.</div>;
     }
@@ -55,7 +66,13 @@ export default function Profile() {
 
       <div className="flex justify-between mt-4">
         <h1 className="text-4xl text-cyan-900">{selectedTab}</h1>
-        <button className="flex items-center gap-2 border border-cyan-950 rounded-md px-4 py-2">
+        <button
+          onClick={() => {
+            logoutUser();
+            router.push("/login");
+          }}
+          className="flex items-center gap-2 border border-cyan-950 rounded-md px-4 py-2"
+        >
           <FiLogOut />
           Logout
         </button>

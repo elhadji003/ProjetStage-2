@@ -20,7 +20,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: white;
+  background: ${(props) => (props.$isScroll ? "black" : "white")};
 `;
 
 export const Left = styled.div`
